@@ -38,9 +38,9 @@ Using the latest version
     git clone https://github.com/chenyk1990/InjectA
 
 -----------
-## Download of injection data
+## Download of injection data (put it into the DATALIB folder under the user's home directory)
 
-https://drive.google.com/drive/folders/1WXVB8ytNB4bOaZ97oq6OmMRyAEg95trp?usp=sharing
+https://utexas.box.com/s/6lgt2kosbxyxd3jvn23avxsrds9huwvu
 
 
 -----------
@@ -50,6 +50,58 @@ Get location for an injection well (120251)
 	from InjectA import get_well_loc
 	(lon,lat)=get_well_loc('120251')
 
+Get well IDs and locations for wells in the given AOI that are in operation as of the compilation date of the injection database
+	lon1=-104.7
+	lon2=-103.9
+	lat1=31.5
+	lat2=31.8
+	from InjectA import get_well_now
+	ids,lonlats=get_well_now(lat1=lat1,lat2=lat2,lon1=lon1,lon2=lon2);
+
+
+Get well IDs and locations for wells in the given AOI as of the compilation date of the injection database
+	lon1=-104.7
+	lon2=-103.9
+	lat1=31.5
+	lat2=31.8
+	from InjectA import get_well
+	ids,lonlats=get_well(lat1=lat1,lat2=lat2,lon1=lon1,lon2=lon2);
+
+Extract injection data for an injection ID
+
+	from InjectA import get_well_injectid
+	data=get_well_injectid('128486')
+	
+Extract injection data for an injection ID and visualize the daily injection volume
+
+	import numpy as np
+	from InjectA import get_well_injectid
+	data=get_well_injectid('128486').sort_values("Date")
+	
+	dates = data['Date'].to_numpy().astype(np.datetime64)
+	values = data['InjectedLiquidBBL'].to_numpy()
+	
+	import matplotlib.pyplot as plt
+	import matplotlib.dates as mdates
+
+
+	plt.figure()
+	plt.plot(dates, values)
+	plt.xlabel("Date")
+	plt.ylabel("BBL")
+	plt.title("Daily injection vs Time")
+	
+	plt.gca().xaxis.set_major_formatter(
+	mdates.DateFormatter("%y-%m-%d")
+	)
+
+	# choose tick spacing (important!)
+	plt.gca().xaxis.set_major_locator(
+	mdates.AutoDateLocator()
+	)
+
+	plt.tight_layout()
+	plt.show()
 
 -----------
 ## Development

@@ -36,7 +36,13 @@ BibTeX:
 Using the latest version
 
     git clone https://github.com/chenyk1990/InjectA
+    cd InjectA
+    pip install -v -e .
+    
+or using pip directly from github (Preferable because Pyseistr is updated very frequently)
 
+    pip install git+https://github.com/chenyk1990/InjectA
+    
 -----------
 ## Download of injection data (put it into the DATALIB folder under the user's home directory)
 

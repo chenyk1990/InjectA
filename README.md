@@ -51,6 +51,7 @@ Get location for an injection well (120251)
 	(lon,lat)=get_well_loc('120251')
 
 Get well IDs and locations for wells in the given AOI that are in operation as of the compilation date of the injection database
+
 	lon1=-104.7
 	lon2=-103.9
 	lat1=31.5
@@ -60,6 +61,7 @@ Get well IDs and locations for wells in the given AOI that are in operation as o
 
 
 Get well IDs and locations for wells in the given AOI as of the compilation date of the injection database
+
 	lon1=-104.7
 	lon2=-103.9
 	lat1=31.5

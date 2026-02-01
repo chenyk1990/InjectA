@@ -39,7 +39,7 @@ Using the latest version
     cd InjectA
     pip install -v -e .
     
-or using pip directly from github (Preferable because Pyseistr is updated very frequently)
+or using pip directly from github
 
     pip install git+https://github.com/chenyk1990/InjectA
     
